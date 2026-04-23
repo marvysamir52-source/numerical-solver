@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Numerical Methods Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            padding: 40px;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #3f51b5;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background: #303f9f;
+            }
+
+        .result-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+
+        .method-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .problem-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .final-result {
+            font-size: 18px;
+            color: #0b7a3b;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #3f51b5;
+            color: white;
+        }
+
+        .note {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        form {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Numerical Methods Solver</h1>
+
+        <h2>Chapter 1: Root Finding Methods</h2>
+        <div class="buttons">
+            <form method="POST">
+                <input type="hidden" name="method" value="bisection">
+                <button type="submit">Bisection Method</button>
+            </form>
+
+            <form method="POST">
+                <input type="hidden" name="method" value="false_position">
+                <button type="submit">False Position Method</button>
+            </form>
+
+            <form method="POST">
+                <input type="hidden" name="method" value="fixed_point">
+                <button type="submit">Fixed Point Method</button>
+            </form>
+
+            <form method="POST">
+                <input type="hidden" name="method" value="newton">
+                <button type="submit">Newton Method</button>
+            </form>
+
+            <form method="POST">
+                <input type="hidden" name="method" value="secant">
+                <button type="submit">Secant Method</button>
+            </form>
+        </div>
+
+        <h2>Chapter 2: Linear Systems</h2>
+        <div class="buttons">
+            <form method="POST">
+                <input type="hidden" name="method" value="gauss">
+                <button type="submit">Gauss Elimination</button>
+            </form>
+
+            <form method="POST">
+                <input type="hidden" name="method" value="lu">
+                <button type="submit">LU Decomposition</button>
+            </form>
+
+            <form method="POST">
+                <input type="hidden" name="method" value="cramer">
+                <button type="submit">Cramer's Rule</button>
+            </form>
+        </div>
+
+        <div class="result-box">
+            <div class="method-title">{{ method_title }}</div>
+            <div class="problem-text">{{ problem_text }}</div>
+            <div class="final-result">{{ final_result }}</div>
+        </div>
+
+        {% if headers %}
+        <table>
+            <thead>
+                <tr>
+                    {% for header in headers %}
+                    <th>{{ header }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        <div class="note">
+            Fixed numbers are already included inside each method.
+        </div>
+    </div>
+</body>
+</html>
